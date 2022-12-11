@@ -4,6 +4,8 @@
 
 #include "header.h"
 
+/* made change to opengl.c */ 
+
 /* OpenGL Extensions variables */
 
 PFNGLGENBUFFERSPROC glGenBuffers;
