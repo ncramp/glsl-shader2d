@@ -22,8 +22,8 @@ SDL_GLContext glContext;
 int main(int argc, char **argv){
 
 	//set initial window width and height - this will be overridden by window events if the window is resized etc
-    window.width = 1024;
-    window.height = 800;
+    window.width = 800;
+    window.height = 600;
 
 	if(SDL_Init(SDL_INIT_VIDEO) < 0){
 		fprintf(stderr, "failure of SDL_Init %s\n", SDL_GetError());
@@ -59,7 +59,10 @@ int main(int argc, char **argv){
 	glViewport(0, 0, window.width, window.height);
 	
 	//shaders
-    SetupGLSL("shaders/vert.vs", "shaders/frag.fs", &program);
+    if(SetupGLSL("shaders/vert.vs", "shaders/frag.fs", &program) == GL_FALSE){
+		fprintf(stderr,"SetupGLSL returned GL_FALSE\n");
+		exit(1);
+	}
     
     glUseProgram(program);
     
